@@ -33,10 +33,6 @@ impl Country {
             total_tests: get_save_number(entry[12]),
         }
     }
-
-    pub fn print(&self) {
-        println!("{} has {}", self.name, self.active_cases);
-    }
 }
 
 fn get_save_number(element: ElementRef) -> i32 {

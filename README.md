@@ -18,3 +18,7 @@ Options:
   -h, --help           Print help information
   -V, --version        Print version information
   ```
+
+This will output a CLI table like this:
+
+![Output Example](./__image/5%20line%20output.png)

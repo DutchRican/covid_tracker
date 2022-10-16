@@ -67,3 +67,20 @@ pub fn convert_row_items_for_table(row_items: &[Country]) -> TableStruct {
             "Total Tests".cell().bold(true),
         ])
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn converts_for_vec_country() {
+        let list = vec![Country {active_cases:33, name: String::from("Test Country"), 
+        total_cases: 5550, new_cases: 15, total_deaths: 1, new_deaths: 1, total_recovered: 44, new_recovered: 33, serious_critical: 0, 
+        cases_per_mil: 231, deaths_per_mil: 10, total_tests: 4000 }];
+
+        let act = convert_row_items_for_table(&list);
+
+        assert_eq!(act.display().unwrap().to_string().contains("Test Country"), true);
+        assert_eq!(act.display().unwrap().to_string().contains("5,550"), true);
+    }
+}

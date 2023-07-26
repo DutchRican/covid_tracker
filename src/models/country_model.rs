@@ -17,8 +17,8 @@ pub struct Country {
 }
 
 impl Country {
-    pub fn parse_entry(entry: &Vec<ElementRef>) -> Country {
-        Country {
+    pub fn build(entry: &Vec<ElementRef>) -> Self {
+        Self {
             name: entry[1].text().next().unwrap().to_string(),
             total_cases: get_parsed_number(entry[2]),
             new_cases: get_parsed_number(entry[3]),
@@ -41,7 +41,7 @@ fn get_parsed_number(element: ElementRef) -> i32 {
         None => "0".to_string(),
     };
 
-    text.parse().unwrap_or(-1)
+    text.parse().unwrap_or(0)
 }
 
 
@@ -71,6 +71,6 @@ mod tests {
 
         let actual = get_parsed_number(element.first().unwrap().to_owned());
 
-        assert_eq!(actual, -1);
+        assert_eq!(actual, 0);
     }
 }
